@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ResilientGrid Solutions | BC/DR Testing</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6f8;
+color:#333;
+}
+
+header{
+background:#0a2540;
+color:white;
+padding:20px;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:auto;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
+
+.hero{
+background:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31') center/cover;
+height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+background:rgba(0,0,0,0.6);
+padding:20px;
+border-radius:8px;
+}
+
+section{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+background:#0a2540;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+button{
+background:#0066ff;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+select{
+padding:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<h2>ResilientGrid</h2>
+
+<div>
+<a href="#services">Services</a>
+<a href="#assessment">Assessment</a>
+<a href="#simulation">Simulation</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+</header>
+
+<div class="hero">
+
+<h1>Business Continuity & Disaster Recovery Testing for Critical Infrastructure</h1>
+
+</div>
+
+<section>
+
+<h2>Protect Your Critical Operations</h2>
+
+<p>
+ResilientGrid Solutions helps data centers and utilities test their resilience
+against outages, disasters, and cyber threats.
+</p>
+
+</section>
+
+<section id="services">
+
+<h2>Our Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Disaster Recovery Testing</h3>
+<p>Simulate failover events and validate recovery capabilities.</p>
+</div>
+
+<div class="card">
+<h3>Data Center Resilience Testing</h3>
+<p>Test power loss, cooling failures, and connectivity outages.</p>
+</div>
+
+<div class="card">
+<h3>Utility Infrastructure Exercises</h3>
+<p>Simulate grid and infrastructure disruptions.</p>
+</div>
+
+<div class="card">
+<h3>Cyber Recovery Testing</h3>
+<p>Test recovery from ransomware and cyber incidents.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="assessment">
+
+<h2>BC/DR Maturity Assessment</h2>
+
+<label>Do you have a disaster recovery plan?</label>
+
+<br><br>
+
+<select id="drplan">
+<option value="0">No</option>
+<option value="5">Partially</option>
+<option value="10">Yes</option>
+</select>
+
+<br><br>
+
+<label>Do you test disaster recovery annually?</label>
+
+<br><br>
+
+<select id="drtest">
+<option value="0">No</option>
+<option value="5">Sometimes</option>
+<option value="10">Yes</option>
+</select>
+
+<br><br>
+
+<button onclick="calculateScore()">Calculate Score</button>
+
+<h3 id="result"></h3>
+
+</section>
+
+<section id="simulation">
+
+<h2>Data Center Outage Simulator</h2>
+
+<button onclick="simulate()">Run Simulation</button>
+
+<p id="sim"></p>
+
+</section>
+
+<section id="dashboard">
+
+<h2>Infrastructure Risk Dashboard</h2>
+
+<canvas id="drChart"></canvas>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<form>
+
+<input placeholder="Name" required>
+
+<br><br>
+
+<input type="email" placeholder="Email" required>
+
+<br><br>
+
+<textarea placeholder="Message"></textarea>
+
+<br><br>
+
+<button type="submit">Send</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>© 2026 ResilientGrid Solutions</p>
+
+</footer>
+
+<script>
+
+function calculateScore(){
+
+var score =
+Number(document.getElementById("drplan").value) +
+Number(document.getElementById("drtest").value);
+
+document.getElementById("result").innerHTML =
+"Your BC/DR maturity score is: " + score + "/20";
+
+}
+
+function simulate(){
+
+var scenarios = [
+"Power outage detected. Backup generators activated.",
+"Cooling system failure detected.",
+"Fiber network outage detected.",
+"Ransomware attack detected."
+];
+
+var random = scenarios[Math.floor(Math.random()*scenarios.length)];
+
+document.getElementById("sim").innerHTML = random;
+
+}
+
+const ctx = document.getElementById('drChart');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['Power','Network','Cyber','Cooling'],
+datasets: [{
+label: 'Risk Level',
+data: [7,5,8,4]
+}]
+}
+});
+
+</script>
+
+</body>
+</html>
