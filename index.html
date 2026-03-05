@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -17,6 +16,7 @@ font-family: Arial;
 margin:0;
 background:#f4f6f8;
 color:#333;
+line-height:1.6;
 }
 
 header{
@@ -46,8 +46,8 @@ height:420px;
 display:flex;
 align-items:center;
 justify-content:center;
-color:white;
 text-align:center;
+color:white;
 }
 
 .hero h1{
@@ -63,7 +63,7 @@ margin:auto;
 padding:60px 20px;
 }
 
-.services{
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
@@ -74,6 +74,10 @@ background:white;
 padding:25px;
 border-radius:10px;
 box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dark{
+background:#eaf1f7;
 }
 
 footer{
@@ -92,8 +96,10 @@ border-radius:6px;
 cursor:pointer;
 }
 
-select{
+select,input,textarea{
 padding:10px;
+width:100%;
+max-width:400px;
 }
 
 </style>
@@ -109,7 +115,10 @@ padding:10px;
 <h2>ResilientGrid</h2>
 
 <div>
+<a href="#about">About</a>
 <a href="#services">Services</a>
+<a href="#framework">Framework</a>
+<a href="#industries">Industries</a>
 <a href="#assessment">Assessment</a>
 <a href="#simulation">Simulation</a>
 <a href="#dashboard">Dashboard</a>
@@ -126,41 +135,132 @@ padding:10px;
 
 </div>
 
-<section>
+<section id="about">
 
-<h2>Protect Your Critical Operations</h2>
+<h2>About ResilientGrid</h2>
 
 <p>
-ResilientGrid Solutions helps data centers and utilities test their resilience
-against outages, disasters, and cyber threats.
+ResilientGrid Solutions helps organizations protect mission-critical operations from
+disasters, cyber incidents, and infrastructure failures.
 </p>
+
+<p>
+Our consulting and testing services focus on validating resilience for:
+</p>
+
+<ul>
+<li>Data centers</li>
+<li>Electric utilities</li>
+<li>Water infrastructure</li>
+<li>Telecommunications networks</li>
+<li>Financial institutions</li>
+<li>Healthcare systems</li>
+</ul>
 
 </section>
 
-<section id="services">
+<section id="services" class="dark">
 
 <h2>Our Services</h2>
 
-<div class="services">
+<div class="grid">
 
 <div class="card">
 <h3>Disaster Recovery Testing</h3>
-<p>Simulate failover events and validate recovery capabilities.</p>
+<p>
+Conduct controlled failover exercises to verify system recovery capabilities.
+</p>
 </div>
 
 <div class="card">
 <h3>Data Center Resilience Testing</h3>
-<p>Test power loss, cooling failures, and connectivity outages.</p>
-</div>
-
-<div class="card">
-<h3>Utility Infrastructure Exercises</h3>
-<p>Simulate grid and infrastructure disruptions.</p>
+<p>
+Simulate power outages, cooling failures, and connectivity disruptions.
+</p>
 </div>
 
 <div class="card">
 <h3>Cyber Recovery Testing</h3>
-<p>Test recovery from ransomware and cyber incidents.</p>
+<p>
+Validate recovery procedures for ransomware and cyber incidents.
+</p>
+</div>
+
+<div class="card">
+<h3>Utility Infrastructure Exercises</h3>
+<p>
+Test grid stability and cascading infrastructure failure scenarios.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="framework">
+
+<h2>BC/DR Testing Framework</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>1. Risk Assessment</h3>
+<p>Identify vulnerabilities across infrastructure and operations.</p>
+</div>
+
+<div class="card">
+<h3>2. Business Impact Analysis</h3>
+<p>Determine critical services and recovery objectives.</p>
+</div>
+
+<div class="card">
+<h3>3. Scenario Development</h3>
+<p>Create realistic disaster scenarios including cyber and physical events.</p>
+</div>
+
+<div class="card">
+<h3>4. Simulation Exercises</h3>
+<p>Run tabletop and live recovery exercises.</p>
+</div>
+
+<div class="card">
+<h3>5. Recovery Validation</h3>
+<p>Verify systems restore within RTO and RPO targets.</p>
+</div>
+
+<div class="card">
+<h3>6. Improvement Planning</h3>
+<p>Deliver executive reports and resilience improvement plans.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="industries" class="dark">
+
+<h2>Industries We Support</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Hyperscale Data Centers</h3>
+<p>Resilience testing for cloud infrastructure and colocation facilities.</p>
+</div>
+
+<div class="card">
+<h3>Electric Utilities</h3>
+<p>Simulate grid disruptions and infrastructure failures.</p>
+</div>
+
+<div class="card">
+<h3>Financial Institutions</h3>
+<p>Validate disaster recovery for transaction systems and data platforms.</p>
+</div>
+
+<div class="card">
+<h3>Healthcare Systems</h3>
+<p>Ensure clinical systems remain operational during disasters.</p>
 </div>
 
 </div>
@@ -171,9 +271,7 @@ against outages, disasters, and cyber threats.
 
 <h2>BC/DR Maturity Assessment</h2>
 
-<label>Do you have a disaster recovery plan?</label>
-
-<br><br>
+<label>Do you have a documented disaster recovery plan?</label>
 
 <select id="drplan">
 <option value="0">No</option>
@@ -184,8 +282,6 @@ against outages, disasters, and cyber threats.
 <br><br>
 
 <label>Do you test disaster recovery annually?</label>
-
-<br><br>
 
 <select id="drtest">
 <option value="0">No</option>
@@ -201,9 +297,11 @@ against outages, disasters, and cyber threats.
 
 </section>
 
-<section id="simulation">
+<section id="simulation" class="dark">
 
 <h2>Data Center Outage Simulator</h2>
+
+<p>Run a simulated failure scenario.</p>
 
 <button onclick="simulate()">Run Simulation</button>
 
@@ -219,9 +317,11 @@ against outages, disasters, and cyber threats.
 
 </section>
 
-<section id="contact">
+<section id="contact" class="dark">
 
 <h2>Contact Us</h2>
+
+<p>Schedule a resilience assessment.</p>
 
 <form>
 
@@ -247,6 +347,8 @@ against outages, disasters, and cyber threats.
 
 <p>© 2026 ResilientGrid Solutions</p>
 
+<p>Business Continuity | Disaster Recovery | Infrastructure Resilience</p>
+
 </footer>
 
 <script>
@@ -266,9 +368,9 @@ function simulate(){
 
 var scenarios = [
 "Power outage detected. Backup generators activated.",
-"Cooling system failure detected.",
-"Fiber network outage detected.",
-"Ransomware attack detected."
+"Cooling failure detected. Temperature increasing.",
+"Network fiber cut detected. Traffic rerouted.",
+"Ransomware attack detected. Systems isolated."
 ];
 
 var random = scenarios[Math.floor(Math.random()*scenarios.length)];
